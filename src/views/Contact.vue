@@ -4,17 +4,16 @@
       <div class="contactDescription">Description of product along with expected pricing.</div>
       <div class="input-container">
         <v-row class="input-content mt-5">
-          <v-form v-model="contact" id="contactForm">
+          <v-form id="contactForm">
           <v-row>
             <v-col>
-              {{ this.name }}
               <p class="mb-0">First Name*</p>
-              <v-text-field id="contactFirstName" class="mediumInput" hide-details name="firstName" v-model="firstName" placeholder="First Name"
+              <v-text-field id="contactFirstName" class="mediumInput" hide-details name="firstName" v-model="firstName" placeholder="John"
               ></v-text-field>
             </v-col>
             <v-col>
               <p>Last Name*</p>
-              <v-text-field id="contactLastName" class="mediumInput" name="lastName" v-model="lastName" placeholder="Last Name"></v-text-field>
+              <v-text-field id="contactLastName" class="mediumInput" name="lastName" v-model="lastName" placeholder="Doe"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
@@ -26,7 +25,7 @@
           <v-row>
             <v-col>              
               <p>Email Address*</p>
-              <v-text-field id="contactEmailAddress" class="largeInput" name="email" v-model="email" placeholder="example@email.com"></v-text-field>
+              <v-text-field id="contactEmailAddress" class="largeInput" name="email" v-model="email" placeholder="john.doe@email.com"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
