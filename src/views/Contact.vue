@@ -9,35 +9,34 @@
             <v-col>
               {{ this.name }}
               <p class="mb-0">First Name*</p>
-              <v-text-field class="mediumInput" hide-details name="firstName" v-model="firstName"
+              <v-text-field id="contactFirstName" class="mediumInput" hide-details name="firstName" v-model="firstName" placeholder="First Name"
               ></v-text-field>
             </v-col>
             <v-col>
               <p>Last Name*</p>
-              <v-text-field class="mediumInput" name="lastName" v-model="lastName"></v-text-field>
+              <v-text-field id="contactLastName" class="mediumInput" name="lastName" v-model="lastName" placeholder="Last Name"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              <p>Phone*</p>
-              <v-text-field class="mediumInput" name="phoneNumber" v-model="phoneNumber"></v-text-field>
+              <p>Phone Number*</p>
+              <v-text-field id="contactPhoneNumber" class="mediumInput" name="phoneNumber" v-model="phoneNumber" placeholder="(###) ###-####"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col>              
-              <p>Email*</p>
-              <v-text-field class="largeInput" name="email" v-model="email"></v-text-field>
+              <p>Email Address*</p>
+              <v-text-field id="contactEmailAddress" class="largeInput" name="email" v-model="email" placeholder="example@email.com"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
             <v-col>            
               <p>What can we help you with?</p>
-              <v-textarea no-resize class="textArea" name="message" v-model="message"></v-textarea>
+              <v-textarea id="contactMessage" no-resize class="textArea" name="message" v-model="message" placeholder="Type your message here.."></v-textarea>
             </v-col>
           </v-row>
           <v-row class="submitButton">
             <v-btn @click="sendEmail()">Submit</v-btn>
-            <input type="submit" value="Send">
           </v-row>
         </v-form>
         
@@ -62,6 +61,22 @@ export default {
   }),
   methods: {
     sendEmail() {
+      if (this.firstName == "") {
+        alert("First Name field is empty");
+        document.getElementById("contactFirstName").focus();
+      } else if (this.lastName == "") {
+        alert("Last Name field is empty");
+        document.getElementById("contactLastName").focus();
+      } else if (this.phoneNumber == "" || this.phoneNumber.length < 9) {
+        alert("Please enter a valid phone number.");
+        document.getElementById("contactPhoneNumber").focus();
+      } else if (this.email == "") {
+        alert("Please enter a valid email address.");
+        document.getElementById("contactEmailAddress").focus();
+      }  else if (this.message == "") {
+        alert("Please enter a valid message.");
+        document.getElementById("contactMessage").focus();
+      } else {
       try {
         emailjs.sendForm('service_2grbipg', 'template_tdvdmim', "#contactForm" ,"bJYwKkriG105jLWq8", {
           firstName: this.firstName,
@@ -70,17 +85,17 @@ export default {
           email: this.email,
           message: this.message,
         })
+        // Reset form field
+        this.firstName = ''
+        this.lastName = ''
+        this.phoneNumber = ''
+        this.email = ''
+        this.message = ''
       } catch(error) {
         console.log({error})
       }
-      console.log(this.message)
-      // Reset form field
-      this.firstName = ''
-      this.lastName = ''
-      this.phoneNumber = ''
-      this.email = ''
-      this.message = ''
-      },
+    }
+    },
   }
 };
 </script>
