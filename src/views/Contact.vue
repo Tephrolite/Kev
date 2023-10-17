@@ -149,6 +149,13 @@ export default {
   margin-left: 0px;
   .v-btn {
     border: 1px solid black;
+    background-color: #D8E2DC;
   }
+}
+.v-input >>> .v-input__slot::before{
+  border-style: none !important;
+}
+.v-input >>> .v-input__slot::after{
+  border-style: none !important;
 }
 </style>

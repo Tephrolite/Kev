@@ -194,7 +194,7 @@ export default {
   margin-top: 10px;
 }
 .v-input.v-text-field {
-  background-color: white;
+  background-color: #D8E2DC;
   border-style: solid;
   border-radius: 3px;
 }
@@ -233,10 +233,21 @@ export default {
   padding-bottom: 40px;
   .v-btn {
     border: 1px solid black;
+    background-color: #D8E2DC;
   }
 }
 .datePicker >>> .mx-input {
   height: 50px;
   border: 1.5px solid black;
+  background-color: #D8E2DC;
+}
+.v-input >>> .v-input__slot::before{
+  border-style: none !important;
+}
+.v-input >>> .v-input__slot::after{
+  border-style: none !important;
+}
+.v-input >>> .v-input__slot > .v-text-field__slot {
+  margin-left: 5px;
 }
 </style>
